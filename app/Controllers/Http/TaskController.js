@@ -4,8 +4,9 @@ const Task = use('App/Models/Task')
 
 class TaskController {
 
-  adyns index ({ view }) {
+  async index ({ view }) {
     const tasks = await Task.all()
+
     return view.render('tasks.index', { tasks: tasks.toJSON() })
   }
 
