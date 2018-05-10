@@ -1,31 +1,26 @@
-# Adonis fullstack application
+# Adonis Tasks
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Esse aplicativo foi feito usando este [tutorial](https://scotch.io/tutorials/building-a-web-app-with-adonisjs)
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+## Configuração
 
-## Setup
-
-Use the adonis command to install the blueprint
+Comece clonando o repositório com o seguinte comando.
 
 ```bash
-adonis new yardstick
+git clone https://github.com/raphaelsantosj/adonis-tasks.git
 ```
 
-or manually clone the repo and then run `npm install`.
+Os arquivos ( markup files ) são referenciados como submodulos, então certifique-se de clona-los também.
 
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
+```bash
+git submodule init 
+git submodule update
 ```
+
+Em seguida, instale as dependências do npm.
+
+```bash
+npm install
+```
+
+Depois disso renomeie o  `.env.example` como `.env` e faça as mudaças necessárias.
