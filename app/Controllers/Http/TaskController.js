@@ -1,6 +1,7 @@
 'use strict'
 
 const Task = use('App/Models/Task')
+const { validate } = use('Validator')
 
 class TaskController {
 
@@ -9,6 +10,27 @@ class TaskController {
 
     return view.render('tasks.index', { tasks: tasks.toJSON() })
   }
+
+  async store ({ request, response, session }) {
+  const validation = await validate(request.all(), {
+    title: 'required|min:3|max:255'
+  })
+
+  if (validation.fails()) {
+    session.withErrors(validation.messages())
+            .flashAll()
+
+    return response.redirect('back')
+  }
+
+  const task = new Task()
+  task.title = request.input('title')
+  await task.save()
+
+  session.flash({ notification: 'Task added!' })
+
+  return response.redirect('back')
+}
 
 }
 
