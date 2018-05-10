@@ -12,25 +12,34 @@ class TaskController {
   }
 
   async store ({ request, response, session }) {
-  const validation = await validate(request.all(), {
-    title: 'required|min:3|max:255'
-  })
+    const validation = await validate(request.all(), {
+      title: 'required|min:3|max:255'
+    })
 
-  if (validation.fails()) {
-    session.withErrors(validation.messages())
-            .flashAll()
+    if (validation.fails()) {
+      session.withErrors(validation.messages())
+      .flashAll()
+
+      return response.redirect('back')
+    }
+
+    const task = new Task()
+    task.title = request.input('title')
+    await task.save()
+
+    session.flash({ notification: 'Task added!' })
 
     return response.redirect('back')
   }
 
-  const task = new Task()
-  task.title = request.input('title')
-  await task.save()
+  async destroy ({ params, session, response }) {
+    const task = await Task.find(params.id)
+    await task.delete()
 
-  session.flash({ notification: 'Task added!' })
+    session.flash({ notification: 'Task deleted!' })
 
-  return response.redirect('back')
-}
+    return response.redirect('back')
+  }
 
 }
 
