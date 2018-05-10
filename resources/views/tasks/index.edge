@@ -2,18 +2,18 @@
 
 @section('content')
 <div class="box">
-  <h2 class="title">New Task</h2>
+  <h2 class="title">Nova tarefa</h2>
 
   <form action="/tasks" method="POST">
     {{ csrfField() }}
 
     <div class="field has-addons">
       <div class="control is-expanded">
-        <input class="input" type="text" name="title" value="{{ old('title', '') }}" placeholder="Task title">
+        <input class="input" type="text" name="title" value="{{ old('title', '') }}" placeholder="Titulo da tarefa">
       </div>
       <div class="control">
         <button type="submit" class="button is-primary">
-          Add Task
+          Adicionar
         </button>
       </div>
     </div>
@@ -29,14 +29,14 @@
 @endif
 
 <div class="box">
-  <h1 class="title">Task List</h1>
+  <h1 class="title">Lista de tarefas</h1>
 
   <table class="table is-bordered is-striped is-narrow is-fullwidth">
     <thead>
       <tr>
-        <th>SN</th>
-        <th>Title</th>
-        <th>Action</th>
+        <th>Cod.</th>
+        <th>Titulo</th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>
@@ -53,7 +53,7 @@
             {{ csrfField() }}
 
             <button type="submit" class="button is-danger is-outlined">
-              <span>DELETE</span>
+              <span>Remover</span>
               <span class="icon is-small">
                 <i class="fa fa-times" aria-hidden="true"></i>
               </span>
@@ -63,7 +63,7 @@
       </tr>
       @else
       <tr>
-        <td colspan="3" class="has-text-centered">No task created yet!</td>
+        <td colspan="3" class="has-text-centered">Nenhuma task foi criada ainda!</td>
       </tr>
       @endeach
     </tbody>

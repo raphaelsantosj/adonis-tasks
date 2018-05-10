@@ -27,7 +27,7 @@ class TaskController {
     task.title = request.input('title')
     await task.save()
 
-    session.flash({ notification: 'Task added!' })
+    session.flash({ notification: 'Tarefa adicionada!' })
 
     return response.redirect('back')
   }
@@ -36,7 +36,7 @@ class TaskController {
     const task = await Task.find(params.id)
     await task.delete()
 
-    session.flash({ notification: 'Task deleted!' })
+    session.flash({ notification: 'Tarefa removida!' })
 
     return response.redirect('back')
   }
