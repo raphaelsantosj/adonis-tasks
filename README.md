@@ -25,7 +25,7 @@ npm install
 
 Depois disso renomeie o  `.env.example` como `.env` e faça as mudaças necessárias para a conexão com o banco de dados.
 
-E rode o comnando.
+E rode o comando.
 
 ```bash
 adonis migration:run
